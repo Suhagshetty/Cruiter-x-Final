@@ -14,44 +14,47 @@ import { CreateEditPage } from "./routes/create-edit-page";
 import { MockLoadPage } from "./routes/mock-load-page";
 import { MockInterviewPage } from "./routes/mock-interview-page";
 import { Feedback } from "./routes/feedback";
+import { ThemeProvider } from "./components/theme-provider";
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        {/* public routes */}
-        <Route element={<PublicLayout />}>
-          <Route index element={<HomePage />} />
-        </Route>
-
-        {/* authentication layout */}
-        <Route element={<AuthenticationLayout />}>
-          <Route path="/signin/*" element={<SignInPage />} />
-          <Route path="/signup/*" element={<SignUpPage />} />
-        </Route>
-
-        {/* protected routes */}
-        <Route
-          element={
-            <ProtectRoutes>
-              <MainLayout />
-            </ProtectRoutes>
-          }
-        >
-          {/* add all the protect routes */}
-          <Route element={<Generate />} path="/generate">
-            <Route index element={<Dashboard />} />
-            <Route path=":interviewId" element={<CreateEditPage />} />
-            <Route path="interview/:interviewId" element={<MockLoadPage />} />
-            <Route
-              path="interview/:interviewId/start"
-              element={<MockInterviewPage />}
-            />
-            <Route path="feedback/:interviewId" element={<Feedback />} />
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route element={<PublicLayout />}>
+            <Route index element={<HomePage />} />
           </Route>
-        </Route>
-      </Routes>
-    </Router>
+
+          {/* Authentication Layout */}
+          <Route element={<AuthenticationLayout />}>
+            <Route path="/signin/*" element={<SignInPage />} />
+            <Route path="/signup/*" element={<SignUpPage />} />
+          </Route>
+
+          {/* Protected Routes */}
+          <Route
+            element={
+              <ProtectRoutes>
+                <MainLayout />
+              </ProtectRoutes>
+            }
+          >
+            {/* All protected routes */}
+            <Route element={<Generate />} path="/generate">
+              <Route index element={<Dashboard />} />
+              <Route path=":interviewId" element={<CreateEditPage />} />
+              <Route path="interview/:interviewId" element={<MockLoadPage />} />
+              <Route
+                path="interview/:interviewId/start"
+                element={<MockInterviewPage />}
+              />
+              <Route path="feedback/:interviewId" element={<Feedback />} />
+            </Route>
+          </Route>
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 };
 

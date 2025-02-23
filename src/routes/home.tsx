@@ -31,13 +31,13 @@ const HomePage = () => {
 
         <div className="flex w-full items-center justify-evenly md:px-12 md:py-16 md:items-center md:justify-end gap-12">
           <p className="text-3xl font-semibold text-gray-900 text-center">
-            250+
+            250k+
             <span className="block text-xl text-muted-foreground font-normal">
               Offers Recieved
             </span>
           </p>
           <p className="text-3xl font-semibold text-gray-900 text-center">
-            1.2k+
+            1.2M+
             <span className="block text-xl text-muted-foreground font-normal">
               Interview Aced
             </span>
@@ -59,8 +59,8 @@ const HomePage = () => {
           <div className="hidden md:block absolute w-80 bottom-4 right-4 px-4 py-2 rounded-md bg-white/60 backdrop-blur-md">
             <h2 className="text-neutral-800 font-semibold">Developer</h2>
             <p className="text-sm text-neutral-500">
-              Are you Ready to get placed at your dream Company? You are just a
-              click Away!!!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+              distinctio natus, quos voluptatibus magni sapiente.
             </p>
 
             <Button className="mt-3">

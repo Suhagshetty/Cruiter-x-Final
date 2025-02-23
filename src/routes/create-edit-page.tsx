@@ -1,9 +1,9 @@
+import { FormMockInterview } from "@/components/form-mock-interview";
+import { db } from "@/config/firebase.config";
 import { Interview } from "@/types";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "@/config/firebase.config";
-import { doc, getDoc } from "firebase/firestore";
-import { FormMockInterview } from "@/components/form-mock-interview";
 
 export const CreateEditPage = () => {
   const { interviewId } = useParams<{ interviewId: string }>();
@@ -13,12 +13,15 @@ export const CreateEditPage = () => {
     const fetchInterview = async () => {
       if (interviewId) {
         try {
-          const interviewDoc = await getDoc(doc(db, "interview", interviewId));
+          const interviewDoc = await getDoc(doc(db, "interviews", interviewId));
           if (interviewDoc.exists()) {
-            setInterview({ ...interviewDoc.data() } as Interview);
+            setInterview({
+              id: interviewDoc.id,
+              ...interviewDoc.data(),
+            } as Interview);
           }
         } catch (error) {
-          console.error("Error fetching interview:", error);
+          console.log(error);
         }
       }
     };
@@ -27,7 +30,7 @@ export const CreateEditPage = () => {
   }, [interviewId]);
 
   return (
-    <div className="my-4 flex flex-col w-full">
+    <div className="my-4 flex-col w-full">
       <FormMockInterview initialData={interview} />
     </div>
   );

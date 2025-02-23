@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Loader } from "lucide-react";
+
 export const LoaderPage = ({ className }: { className?: string }) => {
   return (
     <div
@@ -8,7 +9,7 @@ export const LoaderPage = ({ className }: { className?: string }) => {
         className
       )}
     >
-      <Loader className="h-6 w-6 min-w-6 min-h-6 animate-spin" />
+      <Loader className="w-6 h-6 min-w-6 min-h-6 animate-spin" />
     </div>
   );
 };
